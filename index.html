@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFix Asunción - Servicios Técnicos de Informática</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .location {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-btn, .instagram-btn {
+            display: inline-block;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: slideInUp 1s ease-out 0.9s both;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+            background: #128C7E;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            box-shadow: 0 10px 30px rgba(240, 148, 51, 0.3);
+        }
+
+        .instagram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(240, 148, 51, 0.4);
+            background: linear-gradient(45deg, #e6683c 0%,#dc2743 25%,#cc2366 50%,#bc1888 75%,#8a3ab9 100%);
+        }
+
+        .services {
+            padding: 80px 0;
+            background: linear-gradient(45deg, #f8f9ff 0%, #e8f2ff 100%);
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #2c3e50;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .why-choose {
+            padding: 80px 0;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .why-choose h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-buttons, .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .whatsapp-btn, .instagram-btn {
+                width: 80%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sección Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>🔧 TechFix Asunción</h1>
+            <p>Soluciones Profesionales en Informática</p>
+            <div class="location">📍 Asunción, Paraguay</div>
+            <div class="hero-buttons">
+                <a href="https://wa.me/595986310856?text=Hola,%20necesito%20ayuda%20con%20servicios%20técnicos%20de%20informática" class="whatsapp-btn">
+                    💬 Contactar por WhatsApp
+                </a>
+                <a href="https://www.instagram.com/all_tech.py/" target="_blank" class="instagram-btn">
+                    📸 Síguenos en Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section class="services">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Reparación de Computadoras</h3>
+                    <p>Diagnóstico y reparación de PCs de escritorio y laptops. Solución de problemas de hardware y software con garantía de calidad.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔌</div>
+                    <h3>Instalación de Hardware</h3>
+                    <p>Instalación y configuración de componentes: memoria RAM, discos duros, tarjetas gráficas, fuentes de poder y más.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Configuración de Software</h3>
+                    <p>Instalación de sistemas operativos, programas, antivirus y configuración completa de tu equipo para óptimo rendimiento.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Redes y Conectividad</h3>
+                    <p>Configuración de redes WiFi, conexiones a Internet, impresoras en red y solución de problemas de conectividad.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Backup y Recuperación</h3>
+                    <p>Recuperación de datos perdidos, configuración de copias de seguridad automáticas y migración de información.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Servicio a Domicilio</h3>
+                    <p>Atención personalizada en tu hogar u oficina en toda el área metropolitana de Asunción. Sin costo adicional de traslado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por Qué Elegirnos -->
+    <section class="why-choose">
+        <div class="container">
+            <h2>¿Por Qué Elegirnos?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Respuesta Rápida</h3>
+                    <p>Atención inmediata por WhatsApp y servicio en menos de 24 horas</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Precios Justos</h3>
+                    <p>Presupuestos transparentes sin sorpresas. Calidad al mejor precio</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Garantía Total</h3>
+                    <p>Todos nuestros trabajos incluyen garantía por escrito</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">👨‍💻</div>
+                    <h3>Experiencia</h3>
+                    <p>Técnicos certificados con años de experiencia en el mercado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact">
+        <div class="container">
+            <h2>¿Necesitas Ayuda Técnica?</h2>
+            <p>Contactanos ahora mismo y síguenos en redes sociales para más tips y novedades</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/595986310856?text=Hola,%20necesito%20ayuda%20con%20servicios%20técnicos%20de%20informática" class="whatsapp-btn">
+                    📱 Escribinos al WhatsApp
+                </a>
+                <a href="https://www.instagram.com/all_tech.py/" target="_blank" class="instagram-btn">
+                    📸 Síguenos @all_tech.py
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/595986310856?text=Hola,%20necesito%20ayuda%20con%20servicios%20técnicos%20de%20informática" class="floating-whatsapp" title="Contactar por WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // Animación de aparición gradual al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observar todas las tarjetas de servicio
+        document.querySelectorAll('.service-card, .feature').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Efecto de hover en las tarjetas
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
